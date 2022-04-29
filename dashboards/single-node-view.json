@@ -1,0 +1,1510 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 24,
+  "iteration": 1651173832806,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 14,
+      "panels": [],
+      "title": "Selected Node ($node)",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.load\\.load\\.shortterm"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "1-min load"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.cpu\\.count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CPUs"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "refCount": 0,
+          "refId": "A",
+          "target": "$node.load.load.shortterm",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "$node.cpu.count",
+          "textEditor": true
+        }
+      ],
+      "title": "Total Load",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*buffered.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "buffered"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*cached.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "cached"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*free.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "free"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*used.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "used"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "divideSeries($node.memory.memory.used, sumSeries($node.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "divideSeries($node.memory.memory.buffered, sumSeries($node.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "divideSeries($node.memory.memory.cached, sumSeries($node.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "divideSeries($node.memory.memory.free, sumSeries($node.memory.memory.*))",
+          "textEditor": true
+        }
+      ],
+      "title": "Total Memory",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.user"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "user"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.nice"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "nice"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.system"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "system"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.wait"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "wait"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.steal"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "steal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.softirq"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "softirq"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.interrupt"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "interrupt"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "cn.*_nauhpc\\.aggregation\\.cpu-average\\.percent\\.idle"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "idle"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "$node.aggregation.cpu-average.percent.user",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "$node.aggregation.cpu-average.percent.nice",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "$node.aggregation.cpu-average.percent.system",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "$node.aggregation.cpu-average.percent.wait",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "$node.aggregation.cpu-average.percent.steal",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "$node.aggregation.cpu-average.percent.softirq",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "H",
+          "target": "$node.aggregation.cpu-average.percent.interrupt",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "G",
+          "target": "$node.aggregation.cpu-average.percent.idle",
+          "textEditor": true
+        }
+      ],
+      "title": "Total CPU Utilization",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*rx.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "rx"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*tx.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "tx"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "refCount": 0,
+          "refId": "A",
+          "target": "derivative($node.interface.total.if_octets.rx)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "derivative($node.interface.total.if_octets.tx)",
+          "textEditor": true
+        }
+      ],
+      "title": "Total Network Throughput",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn1_nauhpc.gpu.*.*.gpu_util)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "GPU Utilization"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "refId": "A",
+          "target": "averageSeries($node.gpu.*.*.gpu_util)",
+          "textEditor": true
+        }
+      ],
+      "title": "Total GPU Utilization: ($node)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "refId": "A",
+          "target": "$node.gpu.*.*.$gpu_metric",
+          "textEditor": true
+        }
+      ],
+      "title": "GPU: $gpu_metric $node",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 34,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "cn1_nauhpc",
+          "value": "cn1_nauhpc"
+        },
+        "description": "node",
+        "hide": 0,
+        "includeAll": false,
+        "label": "node",
+        "multi": false,
+        "name": "node",
+        "options": [
+          {
+            "selected": true,
+            "text": "cn1_nauhpc",
+            "value": "cn1_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn2_nauhpc",
+            "value": "cn2_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc",
+            "value": "cn3_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn4_nauhpc",
+            "value": "cn4_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn5_nauhpc",
+            "value": "cn5_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn6_nauhpc",
+            "value": "cn6_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn7_nauhpc",
+            "value": "cn7_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn8_nauhpc",
+            "value": "cn8_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn9_nauhpc",
+            "value": "cn9_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn10_nauhpc",
+            "value": "cn10_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn11_nauhpc",
+            "value": "cn11_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn12_nauhpc",
+            "value": "cn12_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn13_nauhpc",
+            "value": "cn13_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn14_nauhpc",
+            "value": "cn14_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn15_nauhpc",
+            "value": "cn15_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn16_nauhpc",
+            "value": "cn16_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn17_nauhpc",
+            "value": "cn17_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn18_nauhpc",
+            "value": "cn18_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn19_nauhpc",
+            "value": "cn19_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn20_nauhpc",
+            "value": "cn20_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn21_nauhpc",
+            "value": "cn21_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn22_nauhpc",
+            "value": "cn22_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn23_nauhpc",
+            "value": "cn23_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn24_nauhpc",
+            "value": "cn24_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn25_nauhpc",
+            "value": "cn25_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn26_nauhpc",
+            "value": "cn26_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn27_nauhpc",
+            "value": "cn27_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn28_nauhpc",
+            "value": "cn28_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn29_nauhpc",
+            "value": "cn29_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn30_nauhpc",
+            "value": "cn30_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc",
+            "value": "cn31_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc",
+            "value": "cn32_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc",
+            "value": "cn33_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn34_nauhpc",
+            "value": "cn34_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn35_nauhpc",
+            "value": "cn35_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn36_nauhpc",
+            "value": "cn36_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn37_nauhpc",
+            "value": "cn37_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn38_nauhpc",
+            "value": "cn38_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn39_nauhpc",
+            "value": "cn39_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn40_nauhpc",
+            "value": "cn40_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn41_nauhpc",
+            "value": "cn41_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn42_nauhpc",
+            "value": "cn42_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn43_nauhpc",
+            "value": "cn43_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn44_nauhpc",
+            "value": "cn44_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn45_nauhpc",
+            "value": "cn45_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn46_nauhpc",
+            "value": "cn46_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn47_nauhpc",
+            "value": "cn47_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn48_nauhpc",
+            "value": "cn48_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn49_nauhpc",
+            "value": "cn49_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn50_nauhpc",
+            "value": "cn50_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn51_nauhpc",
+            "value": "cn51_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn52_nauhpc",
+            "value": "cn52_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn53_nauhpc",
+            "value": "cn53_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn54_nauhpc",
+            "value": "cn54_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn55_nauhpc",
+            "value": "cn55_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn56_nauhpc",
+            "value": "cn56_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn57_nauhpc",
+            "value": "cn57_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn58_nauhpc",
+            "value": "cn58_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn59_nauhpc",
+            "value": "cn59_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn60_nauhpc",
+            "value": "cn60_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn61_nauhpc",
+            "value": "cn61_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn62_nauhpc",
+            "value": "cn62_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn63_nauhpc",
+            "value": "cn63_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn64_nauhpc",
+            "value": "cn64_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn65_nauhpc",
+            "value": "cn65_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn66_nauhpc",
+            "value": "cn66_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn67_nauhpc",
+            "value": "cn67_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn68_nauhpc",
+            "value": "cn68_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn69_nauhpc",
+            "value": "cn69_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn70_nauhpc",
+            "value": "cn70_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn71_nauhpc",
+            "value": "cn71_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn72_nauhpc",
+            "value": "cn72_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn73_nauhpc",
+            "value": "cn73_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn74_nauhpc",
+            "value": "cn74_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn75_nauhpc",
+            "value": "cn75_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn76_nauhpc",
+            "value": "cn76_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn77_nauhpc",
+            "value": "cn77_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn78_nauhpc",
+            "value": "cn78_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn79_nauhpc",
+            "value": "cn79_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn80_nauhpc",
+            "value": "cn80_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn81_nauhpc",
+            "value": "cn81_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn82_nauhpc",
+            "value": "cn82_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn83_nauhpc",
+            "value": "cn83_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn84_nauhpc",
+            "value": "cn84_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn85_nauhpc",
+            "value": "cn85_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn86_nauhpc",
+            "value": "cn86_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn87_nauhpc",
+            "value": "cn87_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn88_nauhpc",
+            "value": "cn88_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn89_nauhpc",
+            "value": "cn89_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn90_nauhpc",
+            "value": "cn90_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn91_nauhpc",
+            "value": "cn91_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn92_nauhpc",
+            "value": "cn92_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn93_nauhpc",
+            "value": "cn93_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn94_nauhpc",
+            "value": "cn94_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn95_nauhpc",
+            "value": "cn95_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn96_nauhpc",
+            "value": "cn96_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn97_nauhpc",
+            "value": "cn97_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn98_nauhpc",
+            "value": "cn98_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn99_nauhpc",
+            "value": "cn99_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn100_nauhpc",
+            "value": "cn100_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn101_nauhpc",
+            "value": "cn101_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn102_nauhpc",
+            "value": "cn102_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn103_nauhpc",
+            "value": "cn103_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn104_nauhpc",
+            "value": "cn104_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn105_nauhpc",
+            "value": "cn105_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn106_nauhpc",
+            "value": "cn106_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn107_nauhpc",
+            "value": "cn107_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn108_nauhpc",
+            "value": "cn108_nauhpc"
+          }
+        ],
+        "query": "cn1_nauhpc,cn2_nauhpc,cn3_nauhpc,cn4_nauhpc,cn5_nauhpc,cn6_nauhpc,cn7_nauhpc,cn8_nauhpc,cn9_nauhpc,cn10_nauhpc,cn11_nauhpc,cn12_nauhpc,cn13_nauhpc,cn14_nauhpc,cn15_nauhpc,cn16_nauhpc,cn17_nauhpc,cn18_nauhpc,cn19_nauhpc,cn20_nauhpc,cn21_nauhpc,cn22_nauhpc,cn23_nauhpc,cn24_nauhpc,cn25_nauhpc,cn26_nauhpc,cn27_nauhpc,cn28_nauhpc,cn29_nauhpc,cn30_nauhpc,cn31_nauhpc,cn32_nauhpc,cn33_nauhpc,cn34_nauhpc,cn35_nauhpc,cn36_nauhpc,cn37_nauhpc,cn38_nauhpc,cn39_nauhpc,cn40_nauhpc,cn41_nauhpc,cn42_nauhpc,cn43_nauhpc,cn44_nauhpc,cn45_nauhpc,cn46_nauhpc,cn47_nauhpc,cn48_nauhpc,cn49_nauhpc,cn50_nauhpc,cn51_nauhpc,cn52_nauhpc,cn53_nauhpc,cn54_nauhpc,cn55_nauhpc,cn56_nauhpc,cn57_nauhpc,cn58_nauhpc,cn59_nauhpc,cn60_nauhpc,cn61_nauhpc,cn62_nauhpc,cn63_nauhpc,cn64_nauhpc,cn65_nauhpc,cn66_nauhpc,cn67_nauhpc,cn68_nauhpc,cn69_nauhpc,cn70_nauhpc,cn71_nauhpc,cn72_nauhpc,cn73_nauhpc,cn74_nauhpc,cn75_nauhpc,cn76_nauhpc,cn77_nauhpc,cn78_nauhpc,cn79_nauhpc,cn80_nauhpc,cn81_nauhpc,cn82_nauhpc,cn83_nauhpc,cn84_nauhpc,cn85_nauhpc,cn86_nauhpc,cn87_nauhpc,cn88_nauhpc,cn89_nauhpc,cn90_nauhpc,cn91_nauhpc,cn92_nauhpc,cn93_nauhpc,cn94_nauhpc,cn95_nauhpc,cn96_nauhpc,cn97_nauhpc,cn98_nauhpc,cn99_nauhpc,cn100_nauhpc,cn101_nauhpc,cn102_nauhpc,cn103_nauhpc,cn104_nauhpc,cn105_nauhpc,cn106_nauhpc,cn107_nauhpc,cn108_nauhpc",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "temp",
+          "value": "temp"
+        },
+        "description": "gpu_metric",
+        "hide": 0,
+        "includeAll": false,
+        "label": "gpu_metric",
+        "multi": false,
+        "name": "gpu_metric",
+        "options": [
+          {
+            "selected": true,
+            "text": "temp",
+            "value": "temp"
+          },
+          {
+            "selected": false,
+            "text": "gpu_util",
+            "value": "gpu_util"
+          },
+          {
+            "selected": false,
+            "text": "mem_util",
+            "value": "mem_util"
+          },
+          {
+            "selected": false,
+            "text": "mem_total",
+            "value": "mem_total"
+          },
+          {
+            "selected": false,
+            "text": "mem_free",
+            "value": "mem_free"
+          },
+          {
+            "selected": false,
+            "text": "mem_used",
+            "value": "mem_used"
+          }
+        ],
+        "query": "temp,gpu_util,mem_util,mem_total,mem_free,mem_used",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now-45s"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Single Node View",
+  "uid": "wkNhl_8nk",
+  "version": 3,
+  "weekStart": ""
+}

@@ -1,0 +1,3954 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 14,
+  "iteration": 1651169464826,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Single Node View",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://siris.hpc.nau.edu/grafana/d/wkNhl_8nk/single-node-view?orgId=1"
+    }
+  ],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "panels": [],
+      "title": "Aggregate",
+      "type": "row"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(cn*_nauhpc.processes.ps_state.running)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "nprocs"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(cn*_nauhpc.cpu.count)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CPUs"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(cn*_nauhpc.load.load.shortterm)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "1-min load"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.cpus.allocated)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "allocated CPUs (slurm)"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "A",
+          "target": "sumSeries(cn*_nauhpc.processes.ps_state.running)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "sumSeries(cn*_nauhpc.cpu.count)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "sumSeries(cn*_nauhpc.load.load.shortterm)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.cpus.allocated)",
+          "textEditor": true
+        }
+      ],
+      "title": "CPU Load vs Allocated",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.user)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "user"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.nice)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "nice"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.system)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "system"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.wait)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "wait"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.idle)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "idle"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.steal)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "steal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.softirq)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "softirq"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.interrupt)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "interrupt"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.user)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.nice)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.system)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.wait)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.steal)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "F",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.softirq)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "H",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.interrupt)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "G",
+          "target": "averageSeries(cn*_nauhpc.aggregation.cpu-average.percent.idle)",
+          "textEditor": true
+        }
+      ],
+      "title": "CPU Utilization",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.buffered),sumSeries(cn*_nauhpc.memory.memory.*))"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "buffered"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.free),sumSeries(cn*_nauhpc.memory.memory.*))"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "free"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.cached),sumSeries(cn*_nauhpc.memory.memory.*))"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "cached"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*used.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "utilization"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "divideSeries(sumSeries(slurm.sinfo.core.*.*.*.*.mem.allocated),sumSeries(slurm.sinfo.core.*.*.*.*.mem.total))"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "allocated memory (slurm)"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.used), sumSeries(cn*_nauhpc.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "A",
+          "target": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.buffered), sumSeries(cn*_nauhpc.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.cached), sumSeries(cn*_nauhpc.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": true,
+          "refCount": 0,
+          "refId": "B",
+          "target": "divideSeries(sumSeries(cn*_nauhpc.memory.memory.free), sumSeries(cn*_nauhpc.memory.memory.*))",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "divideSeries(sumSeries(slurm.sinfo.core.*.*.*.*.mem.allocated), sumSeries(slurm.sinfo.core.*.*.*.*.mem.total))",
+          "textEditor": true
+        }
+      ],
+      "title": "Memory Utilization vs Allocated",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scale(sumSeries(cn1_nauhpc.gpu.*.*.gpu_util,cn3_nauhpc.gpu.*.*.gpu_util),0.01)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "gpu_util"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.gpus.allocated)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Allocated GPUs (slurm)"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.gpus.total)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total GPUs"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 137,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "scale(sumSeries(cn1_nauhpc.gpu.*.*.gpu_util, cn3_nauhpc.gpu.*.*.gpu_util, cn3._nauhpc.gpu.*.*.gpu_util), 0.01)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.gpus.allocated)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.gpus.total)",
+          "textEditor": true
+        }
+      ],
+      "title": "GPU Utilization vs Allocated (Core Partition)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scale(sumSeries(perSecond(cn100_nauhpc.interface.eno1.if_octets.rx),perSecond(cn101_nauhpc.interface.eno1.if_octets.rx),perSecond(cn102_nauhpc.interface.eno1.if_octets.rx),perSecond(cn103_nauhpc.interface.eno1.if_octets.rx),perSecond(cn104_nauhpc.interface.eno1.if_octets.rx),perSecond(cn105_nauhpc.interface.eno1.if_octets.rx),perSecond(cn106_nauhpc.interface.eno1.if_octets.rx),perSecond(cn107_nauhpc.interface.eno1.if_octets.rx),perSecond(cn108_nauhpc.interface.eno1.if_octets.rx),perSecond(cn1_nauhpc.interface.eno1.if_octets.rx),perSecond(cn28_nauhpc.interface.eno1.if_octets.rx),perSecond(cn29_nauhpc.interface.eno1.if_octets.rx),perSecond(cn2_nauhpc.interface.eno1.if_octets.rx),perSecond(cn30_nauhpc.interface.eno1.if_octets.rx),perSecond(cn31_nauhpc.interface.eno1.if_octets.rx),perSecond(cn32_nauhpc.interface.eno1.if_octets.rx),perSecond(cn33_nauhpc.interface.eno1.if_octets.rx),perSecond(cn34_nauhpc.interface.eno1.if_octets.rx),perSecond(cn35_nauhpc.interface.eno1.if_octets.rx),perSecond(cn36_nauhpc.interface.eno1.if_octets.rx),perSecond(cn37_nauhpc.interface.eno1.if_octets.rx),perSecond(cn38_nauhpc.interface.eno1.if_octets.rx),perSecond(cn39_nauhpc.interface.eno1.if_octets.rx),perSecond(cn40_nauhpc.interface.eno1.if_octets.rx),perSecond(cn41_nauhpc.interface.eno1.if_octets.rx),perSecond(cn42_nauhpc.interface.eno1.if_octets.rx),perSecond(cn43_nauhpc.interface.eno1.if_octets.rx),perSecond(cn44_nauhpc.interface.eno1.if_octets.rx),perSecond(cn45_nauhpc.interface.eno1.if_octets.rx),perSecond(cn46_nauhpc.interface.eno1.if_octets.rx),perSecond(cn47_nauhpc.interface.eno1.if_octets.rx),perSecond(cn48_nauhpc.interface.eno1.if_octets.rx),perSecond(cn49_nauhpc.interface.eno1.if_octets.rx),perSecond(cn50_nauhpc.interface.eno1.if_octets.rx),perSecond(cn51_nauhpc.interface.eno1.if_octets.rx),perSecond(cn52_nauhpc.interface.eno1.if_octets.rx),perSecond(cn53_nauhpc.interface.eno1.if_octets.rx),perSecond(cn54_nauhpc.interface.eno1.if_octets.rx),perSecond(cn55_nauhpc.interface.eno1.if_octets.rx),perSecond(cn56_nauhpc.interface.eno1.if_octets.rx),perSecond(cn57_nauhpc.interface.eno1.if_octets.rx),perSecond(cn58_nauhpc.interface.eno1.if_octets.rx),perSecond(cn59_nauhpc.interface.eno1.if_octets.rx),perSecond(cn60_nauhpc.interface.eno1.if_octets.rx),perSecond(cn61_nauhpc.interface.eno1.if_octets.rx),perSecond(cn62_nauhpc.interface.eno1.if_octets.rx),perSecond(cn63_nauhpc.interface.eno1.if_octets.rx),perSecond(cn64_nauhpc.interface.eno1.if_octets.rx),perSecond(cn65_nauhpc.interface.eno1.if_octets.rx),perSecond(cn66_nauhpc.interface.eno1.if_octets.rx),perSecond(cn67_nauhpc.interface.eno1.if_octets.rx),perSecond(cn68_nauhpc.interface.eno1.if_octets.rx),perSecond(cn69_nauhpc.interface.eno1.if_octets.rx),perSecond(cn70_nauhpc.interface.eno1.if_octets.rx),perSecond(cn71_nauhpc.interface.eno1.if_octets.rx),perSecond(cn72_nauhpc.interface.eno1.if_octets.rx),perSecond(cn73_nauhpc.interface.eno1.if_octets.rx),perSecond(cn74_nauhpc.interface.eno1.if_octets.rx),perSecond(cn75_nauhpc.interface.eno1.if_octets.rx),perSecond(cn76_nauhpc.interface.eno1.if_octets.rx),perSecond(cn77_nauhpc.interface.eno1.if_octets.rx),perSecond(cn78_nauhpc.interface.eno1.if_octets.rx),perSecond(cn79_nauhpc.interface.eno1.if_octets.rx),perSecond(cn80_nauhpc.interface.eno1.if_octets.rx),perSecond(cn81_nauhpc.interface.eno1.if_octets.rx),perSecond(cn82_nauhpc.interface.eno1.if_octets.rx),perSecond(cn83_nauhpc.interface.eno1.if_octets.rx),perSecond(cn84_nauhpc.interface.eno1.if_octets.rx),perSecond(cn85_nauhpc.interface.eno1.if_octets.rx),perSecond(cn86_nauhpc.interface.eno1.if_octets.rx),perSecond(cn87_nauhpc.interface.eno1.if_octets.rx),perSecond(cn88_nauhpc.interface.eno1.if_octets.rx),perSecond(cn89_nauhpc.interface.eno1.if_octets.rx),perSecond(cn90_nauhpc.interface.eno1.if_octets.rx),perSecond(cn91_nauhpc.interface.eno1.if_octets.rx),perSecond(cn92_nauhpc.interface.eno1.if_octets.rx),perSecond(cn93_nauhpc.interface.eno1.if_octets.rx),perSecond(cn94_nauhpc.interface.eno1.if_octets.rx),perSecond(cn95_nauhpc.interface.eno1.if_octets.rx),perSecond(cn96_nauhpc.interface.eno1.if_octets.rx),perSecond(cn97_nauhpc.interface.eno1.if_octets.rx),perSecond(cn98_nauhpc.interface.eno1.if_octets.rx),perSecond(cn99_nauhpc.interface.eno1.if_octets.rx)),8)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "rx"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scale(sumSeries(perSecond(cn100_nauhpc.interface.eno1.if_octets.tx),perSecond(cn101_nauhpc.interface.eno1.if_octets.tx),perSecond(cn102_nauhpc.interface.eno1.if_octets.tx),perSecond(cn103_nauhpc.interface.eno1.if_octets.tx),perSecond(cn104_nauhpc.interface.eno1.if_octets.tx),perSecond(cn105_nauhpc.interface.eno1.if_octets.tx),perSecond(cn106_nauhpc.interface.eno1.if_octets.tx),perSecond(cn107_nauhpc.interface.eno1.if_octets.tx),perSecond(cn108_nauhpc.interface.eno1.if_octets.tx),perSecond(cn1_nauhpc.interface.eno1.if_octets.tx),perSecond(cn28_nauhpc.interface.eno1.if_octets.tx),perSecond(cn29_nauhpc.interface.eno1.if_octets.tx),perSecond(cn2_nauhpc.interface.eno1.if_octets.tx),perSecond(cn30_nauhpc.interface.eno1.if_octets.tx),perSecond(cn31_nauhpc.interface.eno1.if_octets.tx),perSecond(cn32_nauhpc.interface.eno1.if_octets.tx),perSecond(cn33_nauhpc.interface.eno1.if_octets.tx),perSecond(cn34_nauhpc.interface.eno1.if_octets.tx),perSecond(cn35_nauhpc.interface.eno1.if_octets.tx),perSecond(cn36_nauhpc.interface.eno1.if_octets.tx),perSecond(cn37_nauhpc.interface.eno1.if_octets.tx),perSecond(cn38_nauhpc.interface.eno1.if_octets.tx),perSecond(cn39_nauhpc.interface.eno1.if_octets.tx),perSecond(cn40_nauhpc.interface.eno1.if_octets.tx),perSecond(cn41_nauhpc.interface.eno1.if_octets.tx),perSecond(cn42_nauhpc.interface.eno1.if_octets.tx),perSecond(cn43_nauhpc.interface.eno1.if_octets.tx),perSecond(cn44_nauhpc.interface.eno1.if_octets.tx),perSecond(cn45_nauhpc.interface.eno1.if_octets.tx),perSecond(cn46_nauhpc.interface.eno1.if_octets.tx),perSecond(cn47_nauhpc.interface.eno1.if_octets.tx),perSecond(cn48_nauhpc.interface.eno1.if_octets.tx),perSecond(cn49_nauhpc.interface.eno1.if_octets.tx),perSecond(cn50_nauhpc.interface.eno1.if_octets.tx),perSecond(cn51_nauhpc.interface.eno1.if_octets.tx),perSecond(cn52_nauhpc.interface.eno1.if_octets.tx),perSecond(cn53_nauhpc.interface.eno1.if_octets.tx),perSecond(cn54_nauhpc.interface.eno1.if_octets.tx),perSecond(cn55_nauhpc.interface.eno1.if_octets.tx),perSecond(cn56_nauhpc.interface.eno1.if_octets.tx),perSecond(cn57_nauhpc.interface.eno1.if_octets.tx),perSecond(cn58_nauhpc.interface.eno1.if_octets.tx),perSecond(cn59_nauhpc.interface.eno1.if_octets.tx),perSecond(cn60_nauhpc.interface.eno1.if_octets.tx),perSecond(cn61_nauhpc.interface.eno1.if_octets.tx),perSecond(cn62_nauhpc.interface.eno1.if_octets.tx),perSecond(cn63_nauhpc.interface.eno1.if_octets.tx),perSecond(cn64_nauhpc.interface.eno1.if_octets.tx),perSecond(cn65_nauhpc.interface.eno1.if_octets.tx),perSecond(cn66_nauhpc.interface.eno1.if_octets.tx),perSecond(cn67_nauhpc.interface.eno1.if_octets.tx),perSecond(cn68_nauhpc.interface.eno1.if_octets.tx),perSecond(cn69_nauhpc.interface.eno1.if_octets.tx),perSecond(cn70_nauhpc.interface.eno1.if_octets.tx),perSecond(cn71_nauhpc.interface.eno1.if_octets.tx),perSecond(cn72_nauhpc.interface.eno1.if_octets.tx),perSecond(cn73_nauhpc.interface.eno1.if_octets.tx),perSecond(cn74_nauhpc.interface.eno1.if_octets.tx),perSecond(cn75_nauhpc.interface.eno1.if_octets.tx),perSecond(cn76_nauhpc.interface.eno1.if_octets.tx),perSecond(cn77_nauhpc.interface.eno1.if_octets.tx),perSecond(cn78_nauhpc.interface.eno1.if_octets.tx),perSecond(cn79_nauhpc.interface.eno1.if_octets.tx),perSecond(cn80_nauhpc.interface.eno1.if_octets.tx),perSecond(cn81_nauhpc.interface.eno1.if_octets.tx),perSecond(cn82_nauhpc.interface.eno1.if_octets.tx),perSecond(cn83_nauhpc.interface.eno1.if_octets.tx),perSecond(cn84_nauhpc.interface.eno1.if_octets.tx),perSecond(cn85_nauhpc.interface.eno1.if_octets.tx),perSecond(cn86_nauhpc.interface.eno1.if_octets.tx),perSecond(cn87_nauhpc.interface.eno1.if_octets.tx),perSecond(cn88_nauhpc.interface.eno1.if_octets.tx),perSecond(cn89_nauhpc.interface.eno1.if_octets.tx),perSecond(cn90_nauhpc.interface.eno1.if_octets.tx),perSecond(cn91_nauhpc.interface.eno1.if_octets.tx),perSecond(cn92_nauhpc.interface.eno1.if_octets.tx),perSecond(cn93_nauhpc.interface.eno1.if_octets.tx),perSecond(cn94_nauhpc.interface.eno1.if_octets.tx),perSecond(cn95_nauhpc.interface.eno1.if_octets.tx),perSecond(cn96_nauhpc.interface.eno1.if_octets.tx),perSecond(cn97_nauhpc.interface.eno1.if_octets.tx),perSecond(cn98_nauhpc.interface.eno1.if_octets.tx),perSecond(cn99_nauhpc.interface.eno1.if_octets.tx)),8)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "tx"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "refCount": 0,
+          "refId": "A",
+          "target": "scale(sumSeries(perSecond(cn*_nauhpc.interface.eno1.if_octets.rx)), 8)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "scale(sumSeries(perSecond(cn*_nauhpc.interface.eno1.if_octets.tx)), 8)",
+          "textEditor": true
+        }
+      ],
+      "title": "Aggregate Network Throughput (eno1)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scale(sumSeries(perSecond(cn100_nauhpc.interface.ib0.if_octets.rx),perSecond(cn101_nauhpc.interface.ib0.if_octets.rx),perSecond(cn102_nauhpc.interface.ib0.if_octets.rx),perSecond(cn103_nauhpc.interface.ib0.if_octets.rx),perSecond(cn104_nauhpc.interface.ib0.if_octets.rx),perSecond(cn105_nauhpc.interface.ib0.if_octets.rx),perSecond(cn106_nauhpc.interface.ib0.if_octets.rx),perSecond(cn107_nauhpc.interface.ib0.if_octets.rx),perSecond(cn108_nauhpc.interface.ib0.if_octets.rx),perSecond(cn10_nauhpc.interface.ib0.if_octets.rx),perSecond(cn11_nauhpc.interface.ib0.if_octets.rx),perSecond(cn12_nauhpc.interface.ib0.if_octets.rx),perSecond(cn13_nauhpc.interface.ib0.if_octets.rx),perSecond(cn14_nauhpc.interface.ib0.if_octets.rx),perSecond(cn15_nauhpc.interface.ib0.if_octets.rx),perSecond(cn16_nauhpc.interface.ib0.if_octets.rx),perSecond(cn17_nauhpc.interface.ib0.if_octets.rx),perSecond(cn18_nauhpc.interface.ib0.if_octets.rx),perSecond(cn19_nauhpc.interface.ib0.if_octets.rx),perSecond(cn1_nauhpc.interface.ib0.if_octets.rx),perSecond(cn20_nauhpc.interface.ib0.if_octets.rx),perSecond(cn21_nauhpc.interface.ib0.if_octets.rx),perSecond(cn22_nauhpc.interface.ib0.if_octets.rx),perSecond(cn23_nauhpc.interface.ib0.if_octets.rx),perSecond(cn24_nauhpc.interface.ib0.if_octets.rx),perSecond(cn25_nauhpc.interface.ib0.if_octets.rx),perSecond(cn26_nauhpc.interface.ib0.if_octets.rx),perSecond(cn27_nauhpc.interface.ib0.if_octets.rx),perSecond(cn28_nauhpc.interface.ib0.if_octets.rx),perSecond(cn29_nauhpc.interface.ib0.if_octets.rx),perSecond(cn2_nauhpc.interface.ib0.if_octets.rx),perSecond(cn30_nauhpc.interface.ib0.if_octets.rx),perSecond(cn31_nauhpc.interface.ib0.if_octets.rx),perSecond(cn32_nauhpc.interface.ib0.if_octets.rx),perSecond(cn33_nauhpc.interface.ib0.if_octets.rx),perSecond(cn34_nauhpc.interface.ib0.if_octets.rx),perSecond(cn35_nauhpc.interface.ib0.if_octets.rx),perSecond(cn36_nauhpc.interface.ib0.if_octets.rx),perSecond(cn37_nauhpc.interface.ib0.if_octets.rx),perSecond(cn38_nauhpc.interface.ib0.if_octets.rx),perSecond(cn39_nauhpc.interface.ib0.if_octets.rx),perSecond(cn3_nauhpc.interface.ib0.if_octets.rx),perSecond(cn40_nauhpc.interface.ib0.if_octets.rx),perSecond(cn41_nauhpc.interface.ib0.if_octets.rx),perSecond(cn42_nauhpc.interface.ib0.if_octets.rx),perSecond(cn43_nauhpc.interface.ib0.if_octets.rx),perSecond(cn44_nauhpc.interface.ib0.if_octets.rx),perSecond(cn45_nauhpc.interface.ib0.if_octets.rx),perSecond(cn46_nauhpc.interface.ib0.if_octets.rx),perSecond(cn47_nauhpc.interface.ib0.if_octets.rx),perSecond(cn48_nauhpc.interface.ib0.if_octets.rx),perSecond(cn49_nauhpc.interface.ib0.if_octets.rx),perSecond(cn4_nauhpc.interface.ib0.if_octets.rx),perSecond(cn50_nauhpc.interface.ib0.if_octets.rx),perSecond(cn51_nauhpc.interface.ib0.if_octets.rx),perSecond(cn52_nauhpc.interface.ib0.if_octets.rx),perSecond(cn53_nauhpc.interface.ib0.if_octets.rx),perSecond(cn54_nauhpc.interface.ib0.if_octets.rx),perSecond(cn55_nauhpc.interface.ib0.if_octets.rx),perSecond(cn56_nauhpc.interface.ib0.if_octets.rx),perSecond(cn57_nauhpc.interface.ib0.if_octets.rx),perSecond(cn58_nauhpc.interface.ib0.if_octets.rx),perSecond(cn59_nauhpc.interface.ib0.if_octets.rx),perSecond(cn5_nauhpc.interface.ib0.if_octets.rx),perSecond(cn60_nauhpc.interface.ib0.if_octets.rx),perSecond(cn61_nauhpc.interface.ib0.if_octets.rx),perSecond(cn62_nauhpc.interface.ib0.if_octets.rx),perSecond(cn63_nauhpc.interface.ib0.if_octets.rx),perSecond(cn64_nauhpc.interface.ib0.if_octets.rx),perSecond(cn65_nauhpc.interface.ib0.if_octets.rx),perSecond(cn66_nauhpc.interface.ib0.if_octets.rx),perSecond(cn67_nauhpc.interface.ib0.if_octets.rx),perSecond(cn68_nauhpc.interface.ib0.if_octets.rx),perSecond(cn69_nauhpc.interface.ib0.if_octets.rx),perSecond(cn6_nauhpc.interface.ib0.if_octets.rx),perSecond(cn70_nauhpc.interface.ib0.if_octets.rx),perSecond(cn71_nauhpc.interface.ib0.if_octets.rx),perSecond(cn72_nauhpc.interface.ib0.if_octets.rx),perSecond(cn73_nauhpc.interface.ib0.if_octets.rx),perSecond(cn74_nauhpc.interface.ib0.if_octets.rx),perSecond(cn75_nauhpc.interface.ib0.if_octets.rx),perSecond(cn76_nauhpc.interface.ib0.if_octets.rx),perSecond(cn77_nauhpc.interface.ib0.if_octets.rx),perSecond(cn78_nauhpc.interface.ib0.if_octets.rx),perSecond(cn79_nauhpc.interface.ib0.if_octets.rx),perSecond(cn7_nauhpc.interface.ib0.if_octets.rx),perSecond(cn80_nauhpc.interface.ib0.if_octets.rx),perSecond(cn81_nauhpc.interface.ib0.if_octets.rx),perSecond(cn82_nauhpc.interface.ib0.if_octets.rx),perSecond(cn83_nauhpc.interface.ib0.if_octets.rx),perSecond(cn84_nauhpc.interface.ib0.if_octets.rx),perSecond(cn85_nauhpc.interface.ib0.if_octets.rx),perSecond(cn86_nauhpc.interface.ib0.if_octets.rx),perSecond(cn87_nauhpc.interface.ib0.if_octets.rx),perSecond(cn88_nauhpc.interface.ib0.if_octets.rx),perSecond(cn89_nauhpc.interface.ib0.if_octets.rx),perSecond(cn8_nauhpc.interface.ib0.if_octets.rx),perSecond(cn90_nauhpc.interface.ib0.if_octets.rx),perSecond(cn91_nauhpc.interface.ib0.if_octets.rx),perSecond(cn92_nauhpc.interface.ib0.if_octets.rx),perSecond(cn93_nauhpc.interface.ib0.if_octets.rx),perSecond(cn94_nauhpc.interface.ib0.if_octets.rx),perSecond(cn95_nauhpc.interface.ib0.if_octets.rx),perSecond(cn96_nauhpc.interface.ib0.if_octets.rx),perSecond(cn97_nauhpc.interface.ib0.if_octets.rx),perSecond(cn98_nauhpc.interface.ib0.if_octets.rx),perSecond(cn99_nauhpc.interface.ib0.if_octets.rx),perSecond(cn9_nauhpc.interface.ib0.if_octets.rx)),8)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "rx"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scale(sumSeries(perSecond(cn100_nauhpc.interface.ib0.if_octets.tx),perSecond(cn101_nauhpc.interface.ib0.if_octets.tx),perSecond(cn102_nauhpc.interface.ib0.if_octets.tx),perSecond(cn103_nauhpc.interface.ib0.if_octets.tx),perSecond(cn104_nauhpc.interface.ib0.if_octets.tx),perSecond(cn105_nauhpc.interface.ib0.if_octets.tx),perSecond(cn106_nauhpc.interface.ib0.if_octets.tx),perSecond(cn107_nauhpc.interface.ib0.if_octets.tx),perSecond(cn108_nauhpc.interface.ib0.if_octets.tx),perSecond(cn10_nauhpc.interface.ib0.if_octets.tx),perSecond(cn11_nauhpc.interface.ib0.if_octets.tx),perSecond(cn12_nauhpc.interface.ib0.if_octets.tx),perSecond(cn13_nauhpc.interface.ib0.if_octets.tx),perSecond(cn14_nauhpc.interface.ib0.if_octets.tx),perSecond(cn15_nauhpc.interface.ib0.if_octets.tx),perSecond(cn16_nauhpc.interface.ib0.if_octets.tx),perSecond(cn17_nauhpc.interface.ib0.if_octets.tx),perSecond(cn18_nauhpc.interface.ib0.if_octets.tx),perSecond(cn19_nauhpc.interface.ib0.if_octets.tx),perSecond(cn1_nauhpc.interface.ib0.if_octets.tx),perSecond(cn20_nauhpc.interface.ib0.if_octets.tx),perSecond(cn21_nauhpc.interface.ib0.if_octets.tx),perSecond(cn22_nauhpc.interface.ib0.if_octets.tx),perSecond(cn23_nauhpc.interface.ib0.if_octets.tx),perSecond(cn24_nauhpc.interface.ib0.if_octets.tx),perSecond(cn25_nauhpc.interface.ib0.if_octets.tx),perSecond(cn26_nauhpc.interface.ib0.if_octets.tx),perSecond(cn27_nauhpc.interface.ib0.if_octets.tx),perSecond(cn28_nauhpc.interface.ib0.if_octets.tx),perSecond(cn29_nauhpc.interface.ib0.if_octets.tx),perSecond(cn2_nauhpc.interface.ib0.if_octets.tx),perSecond(cn30_nauhpc.interface.ib0.if_octets.tx),perSecond(cn31_nauhpc.interface.ib0.if_octets.tx),perSecond(cn32_nauhpc.interface.ib0.if_octets.tx),perSecond(cn33_nauhpc.interface.ib0.if_octets.tx),perSecond(cn34_nauhpc.interface.ib0.if_octets.tx),perSecond(cn35_nauhpc.interface.ib0.if_octets.tx),perSecond(cn36_nauhpc.interface.ib0.if_octets.tx),perSecond(cn37_nauhpc.interface.ib0.if_octets.tx),perSecond(cn38_nauhpc.interface.ib0.if_octets.tx),perSecond(cn39_nauhpc.interface.ib0.if_octets.tx),perSecond(cn3_nauhpc.interface.ib0.if_octets.tx),perSecond(cn40_nauhpc.interface.ib0.if_octets.tx),perSecond(cn41_nauhpc.interface.ib0.if_octets.tx),perSecond(cn42_nauhpc.interface.ib0.if_octets.tx),perSecond(cn43_nauhpc.interface.ib0.if_octets.tx),perSecond(cn44_nauhpc.interface.ib0.if_octets.tx),perSecond(cn45_nauhpc.interface.ib0.if_octets.tx),perSecond(cn46_nauhpc.interface.ib0.if_octets.tx),perSecond(cn47_nauhpc.interface.ib0.if_octets.tx),perSecond(cn48_nauhpc.interface.ib0.if_octets.tx),perSecond(cn49_nauhpc.interface.ib0.if_octets.tx),perSecond(cn4_nauhpc.interface.ib0.if_octets.tx),perSecond(cn50_nauhpc.interface.ib0.if_octets.tx),perSecond(cn51_nauhpc.interface.ib0.if_octets.tx),perSecond(cn52_nauhpc.interface.ib0.if_octets.tx),perSecond(cn53_nauhpc.interface.ib0.if_octets.tx),perSecond(cn54_nauhpc.interface.ib0.if_octets.tx),perSecond(cn55_nauhpc.interface.ib0.if_octets.tx),perSecond(cn56_nauhpc.interface.ib0.if_octets.tx),perSecond(cn57_nauhpc.interface.ib0.if_octets.tx),perSecond(cn58_nauhpc.interface.ib0.if_octets.tx),perSecond(cn59_nauhpc.interface.ib0.if_octets.tx),perSecond(cn5_nauhpc.interface.ib0.if_octets.tx),perSecond(cn60_nauhpc.interface.ib0.if_octets.tx),perSecond(cn61_nauhpc.interface.ib0.if_octets.tx),perSecond(cn62_nauhpc.interface.ib0.if_octets.tx),perSecond(cn63_nauhpc.interface.ib0.if_octets.tx),perSecond(cn64_nauhpc.interface.ib0.if_octets.tx),perSecond(cn65_nauhpc.interface.ib0.if_octets.tx),perSecond(cn66_nauhpc.interface.ib0.if_octets.tx),perSecond(cn67_nauhpc.interface.ib0.if_octets.tx),perSecond(cn68_nauhpc.interface.ib0.if_octets.tx),perSecond(cn69_nauhpc.interface.ib0.if_octets.tx),perSecond(cn6_nauhpc.interface.ib0.if_octets.tx),perSecond(cn70_nauhpc.interface.ib0.if_octets.tx),perSecond(cn71_nauhpc.interface.ib0.if_octets.tx),perSecond(cn72_nauhpc.interface.ib0.if_octets.tx),perSecond(cn73_nauhpc.interface.ib0.if_octets.tx),perSecond(cn74_nauhpc.interface.ib0.if_octets.tx),perSecond(cn75_nauhpc.interface.ib0.if_octets.tx),perSecond(cn76_nauhpc.interface.ib0.if_octets.tx),perSecond(cn77_nauhpc.interface.ib0.if_octets.tx),perSecond(cn78_nauhpc.interface.ib0.if_octets.tx),perSecond(cn79_nauhpc.interface.ib0.if_octets.tx),perSecond(cn7_nauhpc.interface.ib0.if_octets.tx),perSecond(cn80_nauhpc.interface.ib0.if_octets.tx),perSecond(cn81_nauhpc.interface.ib0.if_octets.tx),perSecond(cn82_nauhpc.interface.ib0.if_octets.tx),perSecond(cn83_nauhpc.interface.ib0.if_octets.tx),perSecond(cn84_nauhpc.interface.ib0.if_octets.tx),perSecond(cn85_nauhpc.interface.ib0.if_octets.tx),perSecond(cn86_nauhpc.interface.ib0.if_octets.tx),perSecond(cn87_nauhpc.interface.ib0.if_octets.tx),perSecond(cn88_nauhpc.interface.ib0.if_octets.tx),perSecond(cn89_nauhpc.interface.ib0.if_octets.tx),perSecond(cn8_nauhpc.interface.ib0.if_octets.tx),perSecond(cn90_nauhpc.interface.ib0.if_octets.tx),perSecond(cn91_nauhpc.interface.ib0.if_octets.tx),perSecond(cn92_nauhpc.interface.ib0.if_octets.tx),perSecond(cn93_nauhpc.interface.ib0.if_octets.tx),perSecond(cn94_nauhpc.interface.ib0.if_octets.tx),perSecond(cn95_nauhpc.interface.ib0.if_octets.tx),perSecond(cn96_nauhpc.interface.ib0.if_octets.tx),perSecond(cn97_nauhpc.interface.ib0.if_octets.tx),perSecond(cn98_nauhpc.interface.ib0.if_octets.tx),perSecond(cn99_nauhpc.interface.ib0.if_octets.tx),perSecond(cn9_nauhpc.interface.ib0.if_octets.tx)),8)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "tx"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 643,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "refCount": 0,
+          "refId": "A",
+          "target": "scale(sumSeries(perSecond(cn*_nauhpc.interface.ib0.if_octets.rx)), 8)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "000000001"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "scale(sumSeries(perSecond(cn*_nauhpc.interface.ib0.if_octets.tx)), 8)",
+          "textEditor": true
+        }
+      ],
+      "title": "Aggregate Network Throughput (ib0)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 110,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.idle)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "idle"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.unknown)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.mixed)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "mixed"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.maint)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "maint"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.draining)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "draining"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.drained)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "drained"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.down)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "down"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.completing)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "completing"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.allocated)"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "allocated"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 531,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "I",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.allocated)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.unknown)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "refCount": 0,
+          "refId": "C",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.mixed)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.maint)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.draining)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.drained)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "G",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.down)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "H",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.completing)",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "sumSeries(slurm.sinfo.core.*.*.*.*.nodes.idle)",
+          "textEditor": true
+        }
+      ],
+      "title": "Node Allocation (Core Partition)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 645,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "refCount": 0,
+          "refId": "A",
+          "target": "slurm.srun.estimated_delay.1",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "slurm.srun.estimated_delay.2",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "slurm.srun.estimated_delay.4",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "slurm.srun.estimated_delay.8",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "slurm.srun.estimated_delay.16",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "slurm.srun.estimated_delay.32",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "G",
+          "target": "slurm.srun.estimated_delay.64",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "H",
+          "target": "slurm.squeue.pending_time.median",
+          "textEditor": true
+        },
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "Ev1rNJK7k"
+          },
+          "hide": false,
+          "refCount": 0,
+          "refId": "I",
+          "target": "slurm.squeue.pending_time.average",
+          "textEditor": true
+        }
+      ],
+      "title": "Job Delay Metrics",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 24,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "max": 1.5,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": "divideSeries.*load.*"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "load"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".*memory\\.used.*"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "memory used"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 0,
+            "y": 36
+          },
+          "id": 28,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "repeat": "all_nodes",
+          "repeatDirection": "h",
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "000000001"
+              },
+              "hide": false,
+              "refCount": 0,
+              "refId": "A",
+              "target": "divideSeries($all_nodes.load.load.shortterm, $all_nodes.cpu.count)",
+              "textEditor": true
+            },
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "000000001"
+              },
+              "hide": false,
+              "refCount": 0,
+              "refId": "B",
+              "target": "divideSeries($all_nodes.memory.memory.used, sumSeries($all_nodes.memory.memory.*))",
+              "textEditor": true
+            }
+          ],
+          "title": "$all_nodes",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Load and Mem For Each Node",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 246,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 37
+          },
+          "id": 248,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "repeat": "all_gpus",
+          "repeatDirection": "h",
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refId": "A",
+              "target": "$all_gpus.$gpu_metric",
+              "textEditor": true
+            }
+          ],
+          "title": "GPU: $gpu_metric",
+          "type": "timeseries"
+        }
+      ],
+      "title": "GPU Stats",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 386,
+      "panels": [
+        {
+          "aliasColors": {
+            "jobs submitted": "#967302",
+            "jobs submitted per second": "#F2C96D"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "slurm.sdiag.jobs.submitted"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "jobs submitted"
+                  }
+                ]
+              }
+            ]
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 39
+          },
+          "hiddenSeries": false,
+          "id": 399,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "jobs submitted per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "A",
+              "target": "slurm.sdiag.jobs.submitted",
+              "textEditor": true
+            },
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "hide": false,
+              "refCount": 0,
+              "refId": "B",
+              "target": "aliasSub(aliasSub(aliasByNode(nonNegativeDerivative(slurm.sdiag.jobs.submitted), 4, 5), '\\.', ' '), '(.*)', '\\1 per second')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "jobs submitted",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:336",
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:337",
+              "format": "none",
+              "label": "jobs per second",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "jobs started": "#1F78C1",
+            "jobs started per second": "#82B5D8",
+            "jobs submitted": "#1F78C1",
+            "jobs submitted per second": "#6D1F62"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "slurm.sdiag.jobs.started"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "jobs started"
+                  }
+                ]
+              }
+            ]
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 39
+          },
+          "hiddenSeries": false,
+          "id": 401,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "jobs started per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "A",
+              "target": "slurm.sdiag.jobs.started",
+              "textEditor": true
+            },
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "B",
+              "target": "aliasSub(aliasSub(aliasByNode(nonNegativeDerivative(slurm.sdiag.jobs.started), 4, 5), '\\.', ' '), '(.*)', '\\1 per second')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "jobs started",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "label": "jobs per second",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "jobs completed": "#3F6833",
+            "jobs completed per second": "#9AC48A",
+            "jobs submitted": "#1F78C1",
+            "jobs submitted per second": "#6D1F62"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "slurm.sdiag.jobs.completed"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "jobs completed"
+                  }
+                ]
+              }
+            ]
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 39
+          },
+          "hiddenSeries": false,
+          "id": 403,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "jobs completed per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "A",
+              "target": "slurm.sdiag.jobs.completed",
+              "textEditor": true
+            },
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "B",
+              "target": "aliasSub(aliasSub(aliasByNode(nonNegativeDerivative(slurm.sdiag.jobs.completed), 4, 5), '\\.', ' '), '(.*)', '\\1 per second')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "jobs completed",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "label": "jobs per second",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "jobs canceled": "#6D1F62",
+            "jobs canceled per second": "#BA43A9",
+            "jobs completed": "#7EB26D",
+            "jobs completed per second": "#EAB839",
+            "jobs submitted": "#1F78C1",
+            "jobs submitted per second": "#6D1F62"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "slurm.sdiag.jobs.canceled"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "jobs canceled"
+                  }
+                ]
+              }
+            ]
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 39
+          },
+          "hiddenSeries": false,
+          "id": 405,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "jobs canceled per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "A",
+              "target": "slurm.sdiag.jobs.canceled",
+              "textEditor": true
+            },
+            {
+              "datasource": {
+                "type": "graphite",
+                "uid": "Ev1rNJK7k"
+              },
+              "refCount": 0,
+              "refId": "B",
+              "target": "aliasSub(aliasSub(aliasByNode(nonNegativeDerivative(slurm.sdiag.jobs.canceled), 4, 5), '\\.', ' '), '(.*)', '\\1 per second')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "jobs cancelled",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "label": "jobs per second",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "agent queue size": "#705DA0",
+            "server thread count": "#AEA2E0"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 47
+          },
+          "hiddenSeries": false,
+          "id": 407,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "server thread count",
+              "linewidth": 1,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.agent_queue_size, 'agent queue size')"
+            },
+            {
+              "hide": false,
+              "refId": "B",
+              "target": "alias(slurm.sdiag.thread_count, 'server thread count')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "server threads / agent queue",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "queue size",
+              "logBase": 1,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "thread count",
+              "logBase": 1,
+              "min": 0,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "scheduling cycle max time": "#890F02",
+            "scheduling cycle mean time": "#1F78C1",
+            "time for last scheduling cycle": "#9AC48A"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 47
+          },
+          "hiddenSeries": false,
+          "id": 409,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "scheduling cycle mean time",
+              "fill": 0,
+              "linewidth": 2
+            },
+            {
+              "alias": "scheduling cycle max time",
+              "fill": 0
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.main.last_cycle_usec, 'time for last scheduling cycle')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.main.mean_cycle_usec, 'scheduling cycle mean time')"
+            },
+            {
+              "refId": "C",
+              "target": "alias(slurm.sdiag.scheduler.main.max_cycle_usec, 'scheduling cycle max time')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "last cycle time",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "µs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "number of scheduling cycles": "#99440A",
+            "scheduling cycles per second": "#F9934E"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 47
+          },
+          "hiddenSeries": false,
+          "id": 411,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "scheduling cycles per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2
+            },
+            {
+              "alias": "scheduling executions per minute",
+              "fill": 0,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.main.total_cycles, 'number of scheduling cycles')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(nonNegativeDerivative(slurm.sdiag.scheduler.main.total_cycles), 'scheduling cycles per second')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "cycles",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "average jobs processed in a scheduling cycle": "#447EBC",
+            "average number of jobs processed in a scheduling cycle": "#447EBC",
+            "length of jobs pending queue": "#E24D42"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "decimals": 0,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 47
+          },
+          "hiddenSeries": false,
+          "id": 413,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "length of jobs pending queue",
+              "yaxis": 1
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.main.mean_depth_cycle, 'average jobs processed in a scheduling cycle')",
+              "textEditor": false
+            },
+            {
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.main.last_queue_length, 'length of jobs pending queue')",
+              "textEditor": false
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "processed / pending jobs",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "backfill jobs started": "#447EBC",
+            "backfilled jobs since last Slurm start": "#447EBC",
+            "jobs backfilled per second": "#EAB839",
+            "jobs backfilled since last Slurm start": "#447EBC",
+            "jobs backfilled since last stats cycle start": "#7EB26D"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 55
+          },
+          "hiddenSeries": false,
+          "id": 415,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "jobs backfilled per second",
+              "fill": 0,
+              "linewidth": 1,
+              "yaxis": 2,
+              "zindex": 3
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.backfill.total_bf_jobs, 'jobs backfilled since last Slurm start')",
+              "textEditor": false
+            },
+            {
+              "hide": false,
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.backfill.total_bf_jobs_since_reset, 'jobs backfilled since last stats cycle start')",
+              "textEditor": false
+            },
+            {
+              "hide": false,
+              "refId": "C",
+              "target": "alias(nonNegativeDerivative(slurm.sdiag.scheduler.backfill.total_bf_jobs_since_reset), 'jobs backfilled per second')",
+              "textEditor": false
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "backfilled jobs",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "none",
+              "label": "jobs / second",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "backfill scheduling cycles": "#E24D42"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 55
+          },
+          "hiddenSeries": false,
+          "id": 417,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "last backfilling cycle time",
+              "fill": 0,
+              "linewidth": 1
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.backfill.last_cycle_usec, 'last backfilling cycle time')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.backfill.mean_cycle_usec, 'mean backfilling cycle time')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "backfill cycle time",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "µs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "backfill scheduling cycles": "#E24D42",
+            "processed jobs during last backfill cycle": "#962D82",
+            "processed jobs during last backfill cycle (try sched)": "#D683CE",
+            "processed jobs in last backfill cycle": "#962D82",
+            "processed jobs in last backfill cycle (try sched)": "#D683CE"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 55
+          },
+          "hiddenSeries": false,
+          "id": 419,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "last backfilling cycle time",
+              "fill": 0,
+              "linewidth": 1
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.backfill.last_depth_cycle, 'processed jobs in last backfill cycle')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.backfill.last_depth_cycle_try, 'processed jobs in last backfill cycle (try sched)')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "last depth cycle",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {
+            "backfill scheduling cycles": "#E24D42",
+            "jobs pending backfill processing": "#E24D42",
+            "mean of jobs pending backfill processing": "#E24D42"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 55
+          },
+          "hiddenSeries": false,
+          "id": 421,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.3.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(slurm.sdiag.scheduler.backfill.last_queue_length, 'jobs pending backfill processing')"
+            },
+            {
+              "hide": true,
+              "refId": "B",
+              "target": "alias(slurm.sdiag.scheduler.backfill.queue_length_mean, 'mean of jobs pending backfill processing')"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "backfill queue length",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "jobs",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        }
+      ],
+      "title": "Slurm Scheduling Stats",
+      "type": "row"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 34,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "all_nodes",
+        "hide": 2,
+        "includeAll": true,
+        "label": "all_nodes",
+        "multi": true,
+        "name": "all_nodes",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "cn1_nauhpc",
+            "value": "cn1_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn2_nauhpc",
+            "value": "cn2_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc",
+            "value": "cn3_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn4_nauhpc",
+            "value": "cn4_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn5_nauhpc",
+            "value": "cn5_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn6_nauhpc",
+            "value": "cn6_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn7_nauhpc",
+            "value": "cn7_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn8_nauhpc",
+            "value": "cn8_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn9_nauhpc",
+            "value": "cn9_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn10_nauhpc",
+            "value": "cn10_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn11_nauhpc",
+            "value": "cn11_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn12_nauhpc",
+            "value": "cn12_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn13_nauhpc",
+            "value": "cn13_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn14_nauhpc",
+            "value": "cn14_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn15_nauhpc",
+            "value": "cn15_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn16_nauhpc",
+            "value": "cn16_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn17_nauhpc",
+            "value": "cn17_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn18_nauhpc",
+            "value": "cn18_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn19_nauhpc",
+            "value": "cn19_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn20_nauhpc",
+            "value": "cn20_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn21_nauhpc",
+            "value": "cn21_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn22_nauhpc",
+            "value": "cn22_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn23_nauhpc",
+            "value": "cn23_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn24_nauhpc",
+            "value": "cn24_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn25_nauhpc",
+            "value": "cn25_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn26_nauhpc",
+            "value": "cn26_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn27_nauhpc",
+            "value": "cn27_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn28_nauhpc",
+            "value": "cn28_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn29_nauhpc",
+            "value": "cn29_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn30_nauhpc",
+            "value": "cn30_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc",
+            "value": "cn31_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc",
+            "value": "cn32_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc",
+            "value": "cn33_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn34_nauhpc",
+            "value": "cn34_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn35_nauhpc",
+            "value": "cn35_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn36_nauhpc",
+            "value": "cn36_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn37_nauhpc",
+            "value": "cn37_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn38_nauhpc",
+            "value": "cn38_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn39_nauhpc",
+            "value": "cn39_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn40_nauhpc",
+            "value": "cn40_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn41_nauhpc",
+            "value": "cn41_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn42_nauhpc",
+            "value": "cn42_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn43_nauhpc",
+            "value": "cn43_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn44_nauhpc",
+            "value": "cn44_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn45_nauhpc",
+            "value": "cn45_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn46_nauhpc",
+            "value": "cn46_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn47_nauhpc",
+            "value": "cn47_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn48_nauhpc",
+            "value": "cn48_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn49_nauhpc",
+            "value": "cn49_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn50_nauhpc",
+            "value": "cn50_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn51_nauhpc",
+            "value": "cn51_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn52_nauhpc",
+            "value": "cn52_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn53_nauhpc",
+            "value": "cn53_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn54_nauhpc",
+            "value": "cn54_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn55_nauhpc",
+            "value": "cn55_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn56_nauhpc",
+            "value": "cn56_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn57_nauhpc",
+            "value": "cn57_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn58_nauhpc",
+            "value": "cn58_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn59_nauhpc",
+            "value": "cn59_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn60_nauhpc",
+            "value": "cn60_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn61_nauhpc",
+            "value": "cn61_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn62_nauhpc",
+            "value": "cn62_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn63_nauhpc",
+            "value": "cn63_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn64_nauhpc",
+            "value": "cn64_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn65_nauhpc",
+            "value": "cn65_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn66_nauhpc",
+            "value": "cn66_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn67_nauhpc",
+            "value": "cn67_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn68_nauhpc",
+            "value": "cn68_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn69_nauhpc",
+            "value": "cn69_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn70_nauhpc",
+            "value": "cn70_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn71_nauhpc",
+            "value": "cn71_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn72_nauhpc",
+            "value": "cn72_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn73_nauhpc",
+            "value": "cn73_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn74_nauhpc",
+            "value": "cn74_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn75_nauhpc",
+            "value": "cn75_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn76_nauhpc",
+            "value": "cn76_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn77_nauhpc",
+            "value": "cn77_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn78_nauhpc",
+            "value": "cn78_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn79_nauhpc",
+            "value": "cn79_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn80_nauhpc",
+            "value": "cn80_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn81_nauhpc",
+            "value": "cn81_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn82_nauhpc",
+            "value": "cn82_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn83_nauhpc",
+            "value": "cn83_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn84_nauhpc",
+            "value": "cn84_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn85_nauhpc",
+            "value": "cn85_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn86_nauhpc",
+            "value": "cn86_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn87_nauhpc",
+            "value": "cn87_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn88_nauhpc",
+            "value": "cn88_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn89_nauhpc",
+            "value": "cn89_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn90_nauhpc",
+            "value": "cn90_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn91_nauhpc",
+            "value": "cn91_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn92_nauhpc",
+            "value": "cn92_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn93_nauhpc",
+            "value": "cn93_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn94_nauhpc",
+            "value": "cn94_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn95_nauhpc",
+            "value": "cn95_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn96_nauhpc",
+            "value": "cn96_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn97_nauhpc",
+            "value": "cn97_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn98_nauhpc",
+            "value": "cn98_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn99_nauhpc",
+            "value": "cn99_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn100_nauhpc",
+            "value": "cn100_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn101_nauhpc",
+            "value": "cn101_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn102_nauhpc",
+            "value": "cn102_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn103_nauhpc",
+            "value": "cn103_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn104_nauhpc",
+            "value": "cn104_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn105_nauhpc",
+            "value": "cn105_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn106_nauhpc",
+            "value": "cn106_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn107_nauhpc",
+            "value": "cn107_nauhpc"
+          },
+          {
+            "selected": false,
+            "text": "cn108_nauhpc",
+            "value": "cn108_nauhpc"
+          }
+        ],
+        "query": "cn1_nauhpc,cn2_nauhpc,cn3_nauhpc,cn4_nauhpc,cn5_nauhpc,cn6_nauhpc,cn7_nauhpc,cn8_nauhpc,cn9_nauhpc,cn10_nauhpc,cn11_nauhpc,cn12_nauhpc,cn13_nauhpc,cn14_nauhpc,cn15_nauhpc,cn16_nauhpc,cn17_nauhpc,cn18_nauhpc,cn19_nauhpc,cn20_nauhpc,cn21_nauhpc,cn22_nauhpc,cn23_nauhpc,cn24_nauhpc,cn25_nauhpc,cn26_nauhpc,cn27_nauhpc,cn28_nauhpc,cn29_nauhpc,cn30_nauhpc,cn31_nauhpc,cn32_nauhpc,cn33_nauhpc,cn34_nauhpc,cn35_nauhpc,cn36_nauhpc,cn37_nauhpc,cn38_nauhpc,cn39_nauhpc,cn40_nauhpc,cn41_nauhpc,cn42_nauhpc,cn43_nauhpc,cn44_nauhpc,cn45_nauhpc,cn46_nauhpc,cn47_nauhpc,cn48_nauhpc,cn49_nauhpc,cn50_nauhpc,cn51_nauhpc,cn52_nauhpc,cn53_nauhpc,cn54_nauhpc,cn55_nauhpc,cn56_nauhpc,cn57_nauhpc,cn58_nauhpc,cn59_nauhpc,cn60_nauhpc,cn61_nauhpc,cn62_nauhpc,cn63_nauhpc,cn64_nauhpc,cn65_nauhpc,cn66_nauhpc,cn67_nauhpc,cn68_nauhpc,cn69_nauhpc,cn70_nauhpc,cn71_nauhpc,cn72_nauhpc,cn73_nauhpc,cn74_nauhpc,cn75_nauhpc,cn76_nauhpc,cn77_nauhpc,cn78_nauhpc,cn79_nauhpc,cn80_nauhpc,cn81_nauhpc,cn82_nauhpc,cn83_nauhpc,cn84_nauhpc,cn85_nauhpc,cn86_nauhpc,cn87_nauhpc,cn88_nauhpc,cn89_nauhpc,cn90_nauhpc,cn91_nauhpc,cn92_nauhpc,cn93_nauhpc,cn94_nauhpc,cn95_nauhpc,cn96_nauhpc,cn97_nauhpc,cn98_nauhpc,cn99_nauhpc,cn100_nauhpc,cn101_nauhpc,cn102_nauhpc,cn103_nauhpc,cn104_nauhpc,cn105_nauhpc,cn106_nauhpc,cn107_nauhpc,cn108_nauhpc",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "all_gpus",
+        "hide": 2,
+        "includeAll": true,
+        "label": "all_gpus",
+        "multi": true,
+        "name": "all_gpus",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "cn1_nauhpc.gpu.v100.0",
+            "value": "cn1_nauhpc.gpu.v100.0"
+          },
+          {
+            "selected": false,
+            "text": "cn1_nauhpc.gpu.v100.1",
+            "value": "cn1_nauhpc.gpu.v100.1"
+          },
+          {
+            "selected": false,
+            "text": "cn1_nauhpc.gpu.v100.2",
+            "value": "cn1_nauhpc.gpu.v100.2"
+          },
+          {
+            "selected": false,
+            "text": "cn1_nauhpc.gpu.v100.3",
+            "value": "cn1_nauhpc.gpu.v100.3"
+          },
+          {
+            "selected": false,
+            "text": "cn2_nauhpc.gpu.a100.0",
+            "value": "cn2_nauhpc.gpu.a100.0"
+          },
+          {
+            "selected": false,
+            "text": "cn2_nauhpc.gpu.a100.1",
+            "value": "cn2_nauhpc.gpu.a100.1"
+          },
+          {
+            "selected": false,
+            "text": "cn2_nauhpc.gpu.a100.2",
+            "value": "cn2_nauhpc.gpu.a100.2"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc.gpu.a100.0",
+            "value": "cn3_nauhpc.gpu.a100.0"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc.gpu.a100.1",
+            "value": "cn3_nauhpc.gpu.a100.1"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc.gpu.a100.2",
+            "value": "cn3_nauhpc.gpu.a100.2"
+          },
+          {
+            "selected": false,
+            "text": "cn3_nauhpc.gpu.a100.3",
+            "value": "cn3_nauhpc.gpu.a100.3"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc.gpu.k80.0",
+            "value": "cn31_nauhpc.gpu.k80.0"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc.gpu.k80.1",
+            "value": "cn31_nauhpc.gpu.k80.1"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc.gpu.k80.2",
+            "value": "cn31_nauhpc.gpu.k80.2"
+          },
+          {
+            "selected": false,
+            "text": "cn31_nauhpc.gpu.k80.3",
+            "value": "cn31_nauhpc.gpu.k80.3"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.0",
+            "value": "cn32_nauhpc.gpu.k80.0"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.1",
+            "value": "cn32_nauhpc.gpu.k80.1"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.2",
+            "value": "cn32_nauhpc.gpu.k80.2"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.3",
+            "value": "cn32_nauhpc.gpu.k80.3"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.4",
+            "value": "cn32_nauhpc.gpu.k80.4"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.5",
+            "value": "cn32_nauhpc.gpu.k80.5"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.6",
+            "value": "cn32_nauhpc.gpu.k80.6"
+          },
+          {
+            "selected": false,
+            "text": "cn32_nauhpc.gpu.k80.7",
+            "value": "cn32_nauhpc.gpu.k80.7"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc.gpu.p100.0",
+            "value": "cn33_nauhpc.gpu.p100.0"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc.gpu.p100.1",
+            "value": "cn33_nauhpc.gpu.p100.1"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc.gpu.p100.2",
+            "value": "cn33_nauhpc.gpu.p100.2"
+          },
+          {
+            "selected": false,
+            "text": "cn33_nauhpc.gpu.p100.3",
+            "value": "cn33_nauhpc.gpu.p100.3"
+          }
+        ],
+        "query": "cn1_nauhpc.gpu.v100.0,cn1_nauhpc.gpu.v100.1,cn1_nauhpc.gpu.v100.2,cn1_nauhpc.gpu.v100.3,cn2_nauhpc.gpu.a100.0,cn2_nauhpc.gpu.a100.1,cn2_nauhpc.gpu.a100.2,cn3_nauhpc.gpu.a100.0,cn3_nauhpc.gpu.a100.1,cn3_nauhpc.gpu.a100.2,cn3_nauhpc.gpu.a100.3,cn31_nauhpc.gpu.k80.0,cn31_nauhpc.gpu.k80.1,cn31_nauhpc.gpu.k80.2,cn31_nauhpc.gpu.k80.3,cn32_nauhpc.gpu.k80.0,cn32_nauhpc.gpu.k80.1,cn32_nauhpc.gpu.k80.2,cn32_nauhpc.gpu.k80.3,cn32_nauhpc.gpu.k80.4,cn32_nauhpc.gpu.k80.5,cn32_nauhpc.gpu.k80.6,cn32_nauhpc.gpu.k80.7,cn33_nauhpc.gpu.p100.0,cn33_nauhpc.gpu.p100.1,cn33_nauhpc.gpu.p100.2,cn33_nauhpc.gpu.p100.3",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "gpu_util",
+          "value": "gpu_util"
+        },
+        "description": "gpu_metric",
+        "hide": 0,
+        "includeAll": false,
+        "label": "gpu_metric",
+        "multi": false,
+        "name": "gpu_metric",
+        "options": [
+          {
+            "selected": false,
+            "text": "temp",
+            "value": "temp"
+          },
+          {
+            "selected": true,
+            "text": "gpu_util",
+            "value": "gpu_util"
+          },
+          {
+            "selected": false,
+            "text": "mem_util",
+            "value": "mem_util"
+          },
+          {
+            "selected": false,
+            "text": "mem_total",
+            "value": "mem_total"
+          },
+          {
+            "selected": false,
+            "text": "mem_free",
+            "value": "mem_free"
+          },
+          {
+            "selected": false,
+            "text": "mem_used",
+            "value": "mem_used"
+          }
+        ],
+        "query": "temp,gpu_util,mem_util,mem_total,mem_free,mem_used",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now-45s"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Monsoon Metrics",
+  "uid": "n6ssrWank",
+  "version": 94,
+  "weekStart": ""
+}
